@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/app_signin"
+        android:icon="@drawable/signin"
+        android:title="Sign In" />
+    <item
+        android:id="@+id/app_stockin"
+        android:icon="@drawable/stock"
+        android:title="Stock In" />
+    <item
+        android:id="@+id/app_stockout"
+        android:icon="@drawable/stock"
+        android:title="Stock Out" />
+    <item
+        android:id="@+id/app_signout"
+        android:icon="@drawable/signout"
+        android:title="Sign Out" />
+</menu>
