@@ -10,4 +10,6 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="welcome">Hi User, this is welcome screen</string>
+    <string name="spinner_title_loc">Shop</string>
+    <string name="spinner_title_cus">Branch</string>
 </resources>

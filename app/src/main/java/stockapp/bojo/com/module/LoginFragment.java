@@ -16,6 +16,7 @@ import stockapp.bojo.com.stockmanagementapp.R;
 import stockapp.bojo.com.stockmanagementapp.dao.LoginDAO;
 import stockapp.bojo.com.stockmanagementapp.dao.StockDAO;
 import stockapp.bojo.com.stockmanagementapp.inf.GeneralCallback;
+import stockapp.bojo.com.stockmanagementapp.inf.Location;
 import stockapp.bojo.com.stockmanagementapp.inf.Login;
 
 public class LoginFragment extends Fragment implements GeneralCallback{
@@ -121,6 +122,8 @@ public class LoginFragment extends Fragment implements GeneralCallback{
     @Override
     public void onComplete(StockDAO stockDAO) {
         LoginDAO loginDAO = (LoginDAO) stockDAO;
+        Location location = (Location) getContext();
+        location.showDialog();
         Toast.makeText(getContext(), "Login to server Successful, Hello " + loginDAO.getUsername() + "!", Toast.LENGTH_LONG).show();
     }
 }

@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
@@ -17,20 +18,25 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.List;
+
+import stockapp.bojo.com.module.LocationFragment;
 import stockapp.bojo.com.module.LoginFragment;
 import stockapp.bojo.com.module.StockInFragment;
 import stockapp.bojo.com.module.WelcomeFragment;
+import stockapp.bojo.com.stockmanagementapp.ctlr.LocationController;
 import stockapp.bojo.com.stockmanagementapp.ctlr.LoginController;
 import stockapp.bojo.com.stockmanagementapp.ctlr.StockOutCtrl;
 import stockapp.bojo.com.stockmanagementapp.ctlr.StockinCtrl;
 import stockapp.bojo.com.stockmanagementapp.dao.StockDAO;
 import stockapp.bojo.com.stockmanagementapp.dao.StockOutDAO;
 import stockapp.bojo.com.stockmanagementapp.inf.GeneralCallback;
+import stockapp.bojo.com.stockmanagementapp.inf.Location;
 import stockapp.bojo.com.stockmanagementapp.inf.Login;
 import stockapp.bojo.com.stockmanagementapp.inf.StockIn;
 import stockapp.bojo.com.stockmanagementapp.inf.StockOut;
 
-public class MainActivity extends AppCompatActivity implements Login,StockIn,StockOut{
+public class MainActivity extends AppCompatActivity implements Login,StockIn,StockOut,Location{
 
     private static String TAG = MainActivity.class.getName();
 
@@ -46,6 +52,7 @@ public class MainActivity extends AppCompatActivity implements Login,StockIn,Sto
     private LoginController loginController;
     private StockinCtrl stockinCtrl;
     private StockOutCtrl stockOutCtrl;
+    private LocationController locationController;
     private Bundle featureName;
 
     @Override
@@ -59,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements Login,StockIn,Sto
         loginController = new LoginController();
         stockinCtrl = new StockinCtrl();
         stockOutCtrl = new StockOutCtrl();
+        locationController = new LocationController();
 
         handler = new Handler();
 
@@ -239,5 +247,35 @@ public class MainActivity extends AppCompatActivity implements Login,StockIn,Sto
         if(stockOutCtrl != null){
             stockOutCtrl.onStockOutComplete(stockOutDAO,callback);
         }
+    }
+
+    @Override
+    public void showDialog() {
+        DialogFragment dialogFragment = new LocationFragment();
+        dialogFragment.show(getSupportFragmentManager(),"");
+    }
+
+    @Override
+    public List<String> getShops() {
+        if(locationController != null){
+            return locationController.getShops();
+        }
+        return null;
+    }
+
+    @Override
+    public List<String> getBranches(String shopName) {
+        if(locationController != null){
+            return locationController.getBranches(shopName);
+        }
+        return null;
+    }
+
+    @Override
+    public void doApply(StockDAO stockDAO, GeneralCallback callback) {
+        if(locationController != null){
+            locationController.doApply(stockDAO,callback);
+        }
+
     }
 }

@@ -8,4 +8,5 @@ import stockapp.bojo.com.stockmanagementapp.dao.StockDAO;
 
 public interface Login {
     void doLogin(StockDAO stockDAO, GeneralCallback callback);
+
 }

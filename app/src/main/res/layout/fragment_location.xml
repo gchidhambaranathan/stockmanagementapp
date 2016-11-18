@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <Spinner
+        android:id="@+id/cusspinner"
+        android:layout_height="wrap_content"
+        android:minWidth="200dp"
+        android:prompt="@string/spinner_title_cus"
+        android:layout_marginStart="67dp"
+        android:layout_width="200dp" />
+
+    <Spinner
+        android:id="@+id/locspinner"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:minWidth="200dp"
+        android:prompt="@string/spinner_title_loc"
+        android:layout_marginTop="31dp"
+        android:layout_below="@+id/cusspinner"
+        android:layout_alignStart="@+id/cusspinner" />
+
+
+</RelativeLayout>
